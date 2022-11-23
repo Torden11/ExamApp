@@ -2,6 +2,7 @@ import { useContext, useState, useRef } from "react";
 import Books from "../../Contexts/Books";
 //Nuotrauka
 import getBase64 from "../../Functions/getBase64";
+import DataContext from "../../Contexts/DataContext";
 
 function Create() {
   const [title, setTitle] = useState("");
@@ -12,6 +13,7 @@ function Create() {
   const { setCreateData, cats } = useContext(Books);
   //Nuotrauka pradzia
   const [photoPrint, setPhotoPrint] = useState(null);
+  const { makeMsg } = useContext(DataContext);
   
   const doPhoto = () => {
     getBase64(fileInput.current.files[0])
@@ -23,6 +25,14 @@ function Create() {
 //Nuotrauka pabaiga
 
   const add = () => {
+    if (title.length === 0 || title.length > 50) {
+      makeMsg("Invalid type. Please use up to 50 symbols", "error");
+      return;
+    }
+    if (cat === 0) {
+      makeMsg("Please choose a category.", "error");
+      return;
+    }
     setCreateData({
       title,
       cat_id: parseInt(cat),

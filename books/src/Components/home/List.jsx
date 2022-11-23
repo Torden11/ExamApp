@@ -14,6 +14,8 @@ import Line from "./Line";
 function List() {
   const { books, setBooks, filterOn, filterWhat } = useContext(Home);
   // const [sortBy, setSortBy] = useState("default");
+  // const [searchBooks, setSearchBooks] = useState("");
+  // const [selectBook, setSelectBook] = useState(null);
   const [stats, setStats] = useState({bookCount: null});
 
   const resetFilter = () => {
@@ -48,11 +50,37 @@ function List() {
   //   }
   // }, [sortBy, setBooks]);
 
+//   const handleChange = (e) => {
+//     setSearchBooks(e.target.value);
+//   };
+
+//   useEffect (() => {
+//     if(searchBooks.length> 2)
+//     setBooks();
+//    }, [searchBooks, setBooks])
+
+//   useEffect (() => {
+//      if(searchBooks.length !== 3)
+//      {setBooks(null)
+//     setSelectBook(null)}
+//     }, [searchBooks, setBooks])   
+// console.log(searchBooks);
   return (
     <>
       <div className="card m-4">
-        <h5 className="card-header">Sort</h5>
+        <h5 className="card-header">Search book</h5>
         <div className="card-body">
+        <div className="mb-3">
+        <input
+        type="text"
+        placeholder="Search"
+        // value={searchBooks}
+        // onChange={handleChange}
+        style={{
+          minwidth: "400px", margin: "auto"
+        }}
+      ></input>
+      </div>
           {/* <div className="mb-3">
             <label className="form-label">Sort by</label>
             <select
@@ -69,7 +97,7 @@ function List() {
           </div> */}
         </div>
       </div>
-      <div className="card m-4">
+      <div className="card m-4 mx-auto ">
         <h5 className="card-header">
           Books List  <span className="click-link" onClick={resetFilter}>Show all books</span>
           <span>Total number of books: ({stats.bookCount})</span>
@@ -77,7 +105,7 @@ function List() {
         <div className="card-body">
           <ul className="list-group">
             {books?.map((b) =>
-              b.show ? <Line key={b.id} book={b} /> : null
+              b.show ? <Line key={b.id} book={b}/> : null
             )}
           </ul>
         </div>

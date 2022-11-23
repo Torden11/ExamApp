@@ -7,7 +7,7 @@ import { authConfig } from "../../Functions/auth";
 
 
 function MainHome() {
-  const [lastUpdate, setLastUpdate] = useState(Date.now());
+  // const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [books, setBooks] = useState(null);
   const filterOn = useRef(false);
   const filterWhat = useRef(null);
@@ -28,7 +28,7 @@ function MainHome() {
         setBooks(res.data.map((d, i) => ({ ...d, show: true, row: i })));
       }
     });
-  }, [lastUpdate]);
+  });
 
   
 

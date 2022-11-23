@@ -27,7 +27,7 @@ function Create() {
       }
 
     return (
-        <div className="card m-4">
+        <div className="card m-4 mx-auto">
             <h5 className="card-header">Register </h5>
             <i style={{color: 'crimson'}}>{error}</i>
             <div className="card-body">

@@ -21,7 +21,7 @@ function Line({ book }) {
           {/* Nuotrauka pabaiga */}
           <div className="line__content__title">{book.title}</div>
           <div className="line__content__cat">
-            {cats.find((c) => c.id === book.cat_id)?.title}
+            Category: {cats.find((c) => c.id === book.cat_id)?.title}
           </div>
         </div>
         <div className="mx-auto line__buttons">

@@ -11,9 +11,9 @@ function Edit() {
 
   //Nuotrauka
   const fileInput = useRef();
-//Nuotrauka
+  //Nuotrauka
   const [photoPrint, setPhotoPrint] = useState(null);
-//Nuotrauka
+  //Nuotrauka
   const doPhoto = () => {
     getBase64(fileInput.current.files[0])
       .then((photo) => setPhotoPrint(photo))
@@ -42,7 +42,7 @@ function Edit() {
       cat: parseInt(cat),
       id: modalData.id,
       deletePhoto: deletePhoto ? 1 : 0,
-      image: photoPrint
+      image: photoPrint,
     });
     //Uzdarome modala. t.y. setititle ji null
     setModalData(null);
@@ -104,10 +104,13 @@ function Edit() {
                     </div>
                     {photoPrint ? (
                       <div className="img-bin">
-                        <div>
-                          <input id="image-delete" type="checkbox" checked={deletePhoto} onChange={() => setDeletePhoto(d => !d)} />
-                          <label htmlFor="image-delete">X</label>
-                        </div>
+                        <label htmlFor="image-delete">X</label>
+                        <input
+                          id="image-delete"
+                          type="checkbox"
+                          checked={deletePhoto}
+                          onChange={() => setDeletePhoto((d) => !d)}
+                        />
                         <img src={photoPrint} alt="upload"></img>
                       </div>
                     ) : null}

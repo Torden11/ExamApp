@@ -135,18 +135,26 @@ function RequireAuth({ children, role }) {
 function LoginPage({setRoleChange}) {
   const navigate = useNavigate();
 
+  const { makeMsg } = useContext(DataContext);
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
 
   const doLogin = () => {
-    axios.post("http://localhost:3003/login", { user, pass }).then((res) => {
-      setRoleChange(Date.now());
-      if ("ok" === res.data.msg) {
-        login(res.data.key);
-        navigate("/", { replace: true });
-      }
-    });
+    axios
+      .post("http://localhost:3003/login", { user, pass })
+      .then((res) => {
+        setRoleChange(Date.now());
+        if ("ok" === res.data.msg) {
+          login(res.data.key);
+          navigate("/", { replace: true });
+          makeMsg(res.data.text, res.data.type);
+        }
+      })
+      .catch(() => {
+        makeMsg("You are not registered", "error");
+      });
   };
+
   return (
     <div className="container-login">
       <div className="login-content">
@@ -171,10 +179,12 @@ function LoginPage({setRoleChange}) {
 }
 
 function LogoutPage({setRoleChange}) {
+  const { makeMsg } = useContext(DataContext);
   useEffect(() => {
     logout();
     setRoleChange(Date.now());
-}, [setRoleChange]);
+    makeMsg('We hope you will come back soon! :)', 'info');
+}, [setRoleChange, makeMsg]);
   return <Navigate to="/login" replace />;
 }
 

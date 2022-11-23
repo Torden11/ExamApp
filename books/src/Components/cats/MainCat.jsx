@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Cats from "../../Contexts/Cats";
 import CreateCat from "./CreateCat";
 import axios from "axios";
 import ListCat from "./ListCat";
 import EditCat from "./EditCat";
 import { authConfig } from "../../Functions/auth";
+import DataContext from "../../Contexts/DataContext";
 
 function Main() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -14,6 +14,7 @@ function Main() {
   const [deleteData, setDeleteData] = useState(null);
   const [modalData, setModalData] = useState(null);
   const [editData, setEditData] = useState(null);
+  const {makeMsg} = useContext(DataContext);
 
   useEffect(() => {
     axios.get("http://localhost:3003/server/cats", authConfig()).then((res) => {
@@ -29,8 +30,9 @@ function Main() {
       .post("http://localhost:3003/server/cats", createData, authConfig())
       .then((res) => {
         setLastUpdate(Date.now());
+        makeMsg(res.data.text, res.data.type);
       });
-  }, [createData]);
+  }, [createData, makeMsg]);
 
   useEffect(() => {
     if (null === deleteData) {
@@ -40,8 +42,9 @@ function Main() {
       .delete("http://localhost:3003/server/cats/" + deleteData.id, authConfig())
       .then((res) => {
         setLastUpdate(Date.now());
+        makeMsg(res.data.text, res.data.type);
       });
-  }, [deleteData]);
+  }, [deleteData, makeMsg]);
 
   useEffect(() => {
     if (null === editData) {
@@ -51,8 +54,9 @@ function Main() {
       .put("http://localhost:3003/server/cats/" + editData.id, editData, authConfig())
       .then((res) => {
         setLastUpdate(Date.now());
+        makeMsg(res.data.text, res.data.type);
       });
-  }, [editData]);
+  }, [editData, makeMsg]);
 
   return (
     <Cats.Provider

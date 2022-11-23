@@ -106,7 +106,7 @@ app.post("/login", (req, res) => {
         if (!result.affectedRows) {
             res.send({ msg: 'error', key: '' });
         } else {
-            res.send({ msg: 'ok', key });
+            res.send({ msg: 'ok', key, text: 'Thanks for coming back ' + req.body.user + ' ! :)', type: 'info' });
         }
     });
 });
@@ -134,7 +134,7 @@ app.post("/server/cats", (req, res) => {
     `;
   con.query(sql, [req.body.title], (err, result) => {
     if (err) throw err;
-    res.send(result);
+    res.send({ msg: 'OK', text: 'A new category has been added.', type: 'success' });
   });
 });
 
@@ -201,7 +201,7 @@ app.delete("/server/cats/:id", (req, res) => {
     `;
   con.query(sql, [req.params.id], (err, result) => {
     if (err) throw err;
-    res.send(result);
+    res.send({ msg: 'OK', text: 'The category has been deleted.', type: 'info' });
   });
 });
 
@@ -229,7 +229,7 @@ app.put("/server/cats/:id", (req, res) => {
     `;
   con.query(sql, [req.body.title, req.params.id], (err, result) => {
     if (err) throw err;
-    res.send(result);
+    res.send({ msg: 'OK', text: 'The category has been edited.', type: 'success' });
   });
 });
 

@@ -7,17 +7,21 @@
   &__content {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     &__title {
       font-size: 20px;
       font-weight: bold;
-      margin-right: 50px;
+      align-items: center;
+      // margin-right: 50px;
     }
     &__cat {
-      font-size: 26px;
+      font-size: 20px;
       color: orange;
       margin-right: 10px;
+      margin-left: 20px;
       font-weight: bold;
       width: 200px;
+      align-items: center;
     }
     &__info {
       font-size: 20px;
@@ -29,6 +33,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-top: 15px;
     button {
       margin-left: 5px;
     }
@@ -45,6 +50,7 @@
   &__content {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     &__title {
       font-size: 20px;
       font-weight: bold;
@@ -66,11 +72,12 @@
       }
     }
     &__cat {
-      font-size: 26px;
+      font-size: 20px;
       color: orange;
       margin-right: 10px;
       font-weight: bold;
       width: 200px;
+      align-items: center;
     }
     &__price {
       color: gray;

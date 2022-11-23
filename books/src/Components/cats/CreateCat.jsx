@@ -1,12 +1,18 @@
 import { useContext, useState } from "react";
 import Cats from "../../Contexts/Cats";
+import DataContext from "../../Contexts/DataContext";
 
 function CreateCat() {
   const [title, setTitle] = useState("");
 
   const { setCreateData } = useContext(Cats);
+  const { makeMsg } = useContext(DataContext);
 
   const add = () => {
+    if (title.length === 0 || title.length > 30) {
+      makeMsg("Invalid type. Please use up to 30 symbols", "error");
+      return;
+    }
     setCreateData({
       title,
     });
