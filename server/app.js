@@ -193,6 +193,23 @@ app.get("/home/books", (req, res) => {
   });
 });
 
+app.get("/home/books/noorders/:id", (req, res) => {
+  const sql = `
+    SELECT c.title AS catTitle, b.*, c.id AS cid
+    FROM cats AS c
+    INNER JOIN books AS b
+    ON b.cat_id = c.id
+    ORDER BY b.title
+    `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+
+
+
 //DELETE
 app.delete("/server/cats/:id", (req, res) => {
   const sql = `

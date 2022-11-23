@@ -9,6 +9,7 @@ import { authConfig } from "../../Functions/auth";
 function MainHome() {
   // const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [books, setBooks] = useState(null);
+  const [cart, setCart]= useState(null);
   const filterOn = useRef(false);
   const filterWhat = useRef(null);
   
@@ -51,6 +52,8 @@ function MainHome() {
         setBooks,
         filterOn,
         filterWhat,
+         cart,
+         setCart
       }}
     >
       <div className="container">

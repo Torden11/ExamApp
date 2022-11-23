@@ -52,6 +52,7 @@ function Nav({ status }) {
                       Books
                     </NavLink>
                   ) : null}
+                  {status === 2 ? <NavLink to="/cart" className={ ({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Cart</NavLink> : null}
                   {status !== 1 ? (
                     <NavLink to="/logout" className="nav-link">
                       Logout

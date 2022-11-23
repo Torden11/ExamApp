@@ -5,7 +5,7 @@ import Home from '../../Contexts/Home';
 
 function Line({ book }) {
 
-    const { setBooks, filterOn, filterWhat } = useContext(Home);
+    const { setCart, setBooks, filterOn, filterWhat } = useContext(Home);
 
     // const [rate, setRate] = useState(5);
 
@@ -28,6 +28,11 @@ function Line({ book }) {
         }
         filterOn.current = !filterOn.current;
     }
+
+    const add = () => {
+        // console.log(userId)
+        setCart();
+      };
 
     return (
         <li className="list-group-item">
@@ -53,7 +58,7 @@ function Line({ book }) {
                         </select>
                     </div> */}
                     <div className="home__buttons">
-                    <button type="button" className="btn btn-outline-success">Book it</button>
+                    <button onClick={add} type="button" className="btn btn-outline-success">Book it</button>
                     {/* <button onClick={doRating} type="button" className="btn btn-outline-success">Book it</button> */}
                 </div>
                 </div>

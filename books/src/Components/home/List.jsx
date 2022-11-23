@@ -70,14 +70,14 @@ function List() {
       <div className="card m-4">
         <h5 className="card-header">Search book</h5>
         <div className="card-body">
-        <div className="mb-3">
+        <div className="mb-3" style={{textalign: "center"}}>
         <input
         type="text"
         placeholder="Search"
         // value={searchBooks}
         // onChange={handleChange}
         style={{
-          minwidth: "400px", margin: "auto"
+          minwidth: "400px"
         }}
       ></input>
       </div>
