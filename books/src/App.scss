@@ -1,5 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./sass/line";
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
 body {
   min-height: 100vh;
@@ -44,6 +45,54 @@ body {
 
 .navbar {
   background-color: green;
+}
+.navbar #hidden {
+  display: flex;
+  }
+
+  // .menu-btn {
+  //   display: none;
+  // }
+  .fa {
+    display: none;
+  }
+
+.navbar-collapse {
+  cursor: pointer;
+  display: flex;
+
+  @media only screen and (max-width: 995px) {
+
+    // .menu-btn {
+    //   display: block;
+    //   background-color: #4CAF50;
+    //   border: 2px solid white;
+    //   border-radius: 4px;
+    // }
+    
+    .fa {
+      display: block;
+      color: white;
+      margin-right: 20px;     
+    }
+
+    .navbar-nav {
+      display: none;
+    }
+  
+    .navbar #hidden {
+      position: absolute;
+      left: 0px;
+      top: 56px;
+      max-height: 250px;
+      width: 100%;
+      background-color: #212529;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+}
 }
 
 .img-bin {

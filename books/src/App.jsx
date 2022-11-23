@@ -24,6 +24,7 @@ function App() {
   const [roleChange, setRoleChange] = useState(Date.now());
   const [msgs, setMsgs] = useState([]);
   const [userId, setUserId] = useState(null)
+  const [showLinks, setShowLinks] = useState(false);
   
 
   const makeMsg = useCallback((text, type = "") => {
@@ -60,7 +61,9 @@ function App() {
         setMsgs,
         makeMsg,
         setUserId, 
-        userId
+        userId,
+        showLinks,
+        setShowLinks
       }}
     >
     <BrowserRouter>

@@ -1,15 +1,26 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import {useContext} from "react";
+import DataContext from "../Contexts/DataContext";
 
 function Nav({ status }) {
+
+  const navigate = useNavigate();
+  const { showLinks, setShowLinks } = useContext(DataContext);
+
+  const goHome = () => {
+    navigate("/", { replace: true });
+  };
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-12">
           <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="container-fluid">
-              <span className="navbar-brand">Books App</span>
+              <span className="navbar-brand" onClick={goHome}>Books App</span>
               <div className="navbar-collapse">
-                <div className="navbar-nav">
+              <i className="fa fa-bars" onClick={() => setShowLinks(!showLinks)}></i>
+                <div className="navbar-nav" id={showLinks ? "hidden" : ""}>
                   {status === 2 || status === 3 || status === 4 ? (
                     <NavLink
                       to="/"
