@@ -1,0 +1,177 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./sass/line";
+
+body {
+  min-height: 100vh;
+  overflow: auto;
+  background: linear-gradient(to left top, #eccb10, #84c222,);
+  font-family: "Arima", cursive;
+  font-weight: 600;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.card-header {
+  background-color: rgba(0, 128, 0, 0.637);
+}
+
+.card-body {
+  background-color: rgba(255, 217, 0, 0.61);
+}
+
+.col-4:hover {
+  box-shadow: 10px 10px 25px 0px #3c3c3c;
+}
+
+.col-6:hover {
+  box-shadow: 10px 10px 25px 0px #3c3c3c;
+}
+
+.col-xl-8:hover {
+  box-shadow: 10px 10px 25px 0px #3c3c3c;
+}
+
+.col-12:hover {
+  box-shadow: 10px 10px 25px 0px #3c3c3c;
+}
+
+.modal {
+  display: block;
+  background-color: #0000005f;
+}
+
+.navbar {
+  background-color: green;
+}
+
+.img-bin {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  label {
+    position: absolute;
+    top: 6px;
+    left: 120px;
+    border-radius: 10em;
+    padding: 2px 6px 3px;
+    text-decoration: none;
+    font: 700 10px/15px sans-serif;
+    background: #555;
+    border: 3px solid #fff;
+    color: #FFF;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      -webkit-transition: background 0.5s;
+      transition: background 0.5s;
+      z-index: 10;
+    }
+    label:hover {
+     background: #E54E4E;
+      padding: 3px 7px 5px;
+      cursor: pointer;
+    }
+    label:active {
+     background: #E54E4E;
+    }
+    [type=checkbox] {
+      display: none;
+    }
+    img {
+        height: auto;
+        width: 150px;
+        display: block;
+        // position: relative;
+        z-index: 5;
+    }
+    [type=checkbox]:checked~img {
+        opacity: 0.3;
+    }
+}
+
+.red-image {
+  font-size: 14px;
+  line-height: 34px;
+  color: crimson;
+  border: 1px solid crimson;
+  padding: 0 20px;
+}
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  .login-content {
+      display: flex;
+      flex-direction: column;
+    }
+  button {
+    margin-top: 20px;
+  }
+}
+
+.msg-bin {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  .toast {
+      display: block;
+      margin: 10px;
+      &.ok {
+          background-color: green;
+          color: white;
+      }
+      &.error {
+          background-color: crimson;
+          color: white;
+      }
+      &.info {
+          background-color: skyblue;
+          color: white;
+      }
+  }
+}
+
+@media (max-width: 990px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    .col-8 {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .col-4 {
+      width: 510px;
+    }
+    .col-6 {
+      width: 400px;
+    }
+  }
+  .navbar-nav {
+    font-size: 15px;
+  }
+
+  .line {
+    flex-direction: column;
+    margin: 10px 10px;
+    &_content{
+      align-items: center;
+    }
+  }
+
+  .line_buttons {
+    margin-top: 20px;
+  }
+
+  .red-image {
+    border: none;
+    display: flex;
+    text-align: center;
+    
+  }
+}
