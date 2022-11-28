@@ -10,7 +10,7 @@ import Nav from "./Components/Nav";
 import Home from "./Components/home/MainHome";
 import MainCat from "./Components/cats/MainCat";
 import Main from "./Components/books/Main";
-import MainCart from "./Components/cart/Main";
+// import MainCart from "./Components/cart/Main";
 import RegisterPage from './Components/register/Main'
 import Messages from "./Components/Messages";
 import { useState, useEffect, useCallback, useContext } from "react";
@@ -97,14 +97,14 @@ function App() {
             </RequireAuth>
           }
         ></Route>
-        <Route
+        {/* <Route
             path="/cart"
             element={
               <RequireAuth role="user">
                 <MainCart />
               </RequireAuth>
             }
-          ></Route>
+          ></Route> */}
         <Route path="/register" element={<RegisterPage setRoleChange={setRoleChange} />} />
       </Routes>
     </BrowserRouter>

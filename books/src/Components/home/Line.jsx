@@ -5,7 +5,7 @@ import Home from '../../Contexts/Home';
 
 function Line({ book }) {
 
-    const { setCart, setBooks, filterOn, filterWhat } = useContext(Home);
+    const { setBooks, filterOn, filterWhat } = useContext(Home);
 
     // const [rate, setRate] = useState(5);
 
@@ -29,21 +29,21 @@ function Line({ book }) {
         filterOn.current = !filterOn.current;
     }
 
-    const add = () => {
-        // console.log(userId)
-        setCart();
-      };
+    // const add = () => {
+    //     // console.log(userId)
+    //     setCart();
+    //   };
 
     return (
         <li className="list-group-item">
             <div className="home">
                 <div className="home__content">
                     <div className="home__content__info">
-                        <h2>{book.title}</h2>
                         {book.image ? <div className='img-bin'>
                             <img src={book.image} alt={book.title}>
                             </img>
                         </div> : null}
+                        <h2>{book.title}</h2>
                     </div>
                     <div className="home__content__cat click-link" onClick={filter}>
                         Category: {book.catTitle}
@@ -58,7 +58,7 @@ function Line({ book }) {
                         </select>
                     </div> */}
                     <div className="home__buttons">
-                    <button onClick={add} type="button" className="btn btn-outline-success">Book it</button>
+                    <button type="button" className="btn btn-outline-success">Book it</button>
                     {/* <button onClick={doRating} type="button" className="btn btn-outline-success">Book it</button> */}
                 </div>
                 </div>

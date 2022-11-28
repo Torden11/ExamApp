@@ -19,7 +19,10 @@ function Line({ book }) {
             )}
           </div>
           {/* Nuotrauka pabaiga */}
+          <div className="title-container">
           <div className="line__content__title">{book.title}</div>
+          <div className="line__content__author">Author: {book.author}</div>
+          </div>
           <div className="line__content__cat">
             Category: {cats.find((c) => c.id === book.cat_id)?.title}
           </div>

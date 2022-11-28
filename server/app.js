@@ -140,12 +140,12 @@ app.post("/server/cats", (req, res) => {
 
 app.post("/server/books", (req, res) => {
   const sql = `
-        INSERT INTO books (title, cat_id, image)
-        VALUES (?, ?, ?)
+        INSERT INTO books (title, author, cat_id, image)
+        VALUES (?, ?, ?, ?)
         `;
   con.query(
     sql,
-    [req.body.title, req.body.cat_id, req.body.image],
+    [req.body.title, req.body.author, req.body.cat_id, req.body.image],
     (err, result) => {
       if (err) throw err;
       res.send({ msg: 'OK', text: 'A new book has been added.', type: 'success' });
@@ -193,19 +193,19 @@ app.get("/home/books", (req, res) => {
   });
 });
 
-app.get("/home/books/noorders/:id", (req, res) => {
-  const sql = `
-    SELECT c.title AS catTitle, b.*, c.id AS cid
-    FROM cats AS c
-    INNER JOIN books AS b
-    ON b.cat_id = c.id
-    ORDER BY b.title
-    `;
-  con.query(sql, (err, result) => {
-    if (err) throw err;
-    res.send(result);
-  });
-});
+// app.get("/home/books/noorders/:id", (req, res) => {
+//   const sql = `
+//     SELECT c.title AS catTitle, b.*, c.id AS cid
+//     FROM cats AS c
+//     INNER JOIN books AS b
+//     ON b.cat_id = c.id
+//     ORDER BY b.title
+//     `;
+//   con.query(sql, (err, result) => {
+//     if (err) throw err;
+//     res.send(result);
+//   });
+// });
 
 
 
@@ -256,18 +256,19 @@ app.put("/server/books/:id", (req, res) => {
   if (req.body.deletePhoto) {
     sql = `
     UPDATE books
-    SET title = ?, cat_id = ?, image = null
+    SET title = ?, author = ?, cat_id = ?, image = null
     WHERE id = ?
     `;
-    request = [req.body.title, req.body.cat, req.params.id];
+    request = [req.body.title, req.body.author, req.body.cat, req.params.id];
   } else if (req.body.image) {
     sql = `
     UPDATE books
-    SET title = ?, cat_id = ?, image = ?
+    SET title = ?, author = ?, cat_id = ?, image = ?
     WHERE id = ?
     `;
     request = [
       req.body.title,
+      req.body.author,
       req.body.cat,
       req.body.image,
       req.params.id,
@@ -275,10 +276,10 @@ app.put("/server/books/:id", (req, res) => {
   } else {
     sql = `
     UPDATE books
-    SET title = ?, cat_id = ?
+    SET title = ?, author = ?, cat_id = ?
     WHERE id = ?
     `;
-    request = [req.body.title, req.body.cat, req.params.id];
+    request = [req.body.title, req.body.author, req.body.cat, req.params.id];
   }
 
   con.query(sql, request, (err, result) => {

@@ -6,6 +6,7 @@ import DataContext from "../../Contexts/DataContext";
 
 function Create() {
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [cat, setCat] = useState(0);
   //Nuotrauka
   const fileInput = useRef();
@@ -35,11 +36,13 @@ function Create() {
     }
     setCreateData({
       title,
+      author,
       cat_id: parseInt(cat),
       //Nuotrauka
       image: photoPrint,
     });
     setTitle("");
+    setAuthor("");
     setCat(0);
     //Nuotrauka
     setPhotoPrint(null);
@@ -57,6 +60,15 @@ function Create() {
             className="form-control"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Book Author</label>
+          <input
+            type="text"
+            className="form-control"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
           />
         </div>
         <div>

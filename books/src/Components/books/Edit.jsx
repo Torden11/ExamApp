@@ -6,6 +6,7 @@ import getBase64 from "../../Functions/getBase64";
 function Edit() {
   const { modalData, setModalData, setEditData, cats } = useContext(Books);
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [cat, setCat] = useState(0);
   const [deletePhoto, setDeletePhoto] = useState(false);
 
@@ -29,6 +30,7 @@ function Edit() {
     }
     // console.log(modalData)
     setTitle(modalData.title);
+    setAuthor(modalData.author);
     setCat(modalData.cat_id);
     //Nuotrauka
     setPhotoPrint(modalData.image);
@@ -39,6 +41,7 @@ function Edit() {
   const save = () => {
     setEditData({
       title,
+      author,
       cat: parseInt(cat),
       id: modalData.id,
       deletePhoto: deletePhoto ? 1 : 0,
@@ -58,7 +61,7 @@ function Edit() {
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Edit movie</h5>
+            <h5 className="modal-title">Edit book</h5>
             <button
               onClick={() => setModalData(null)}
               type="button"
@@ -69,12 +72,19 @@ function Edit() {
             <div className="card m-4">
               <div className="card-body">
                 <div className="mb-3">
-                  <label className="form-label">Movie Title</label>
+                <label className="form-label">Book Title</label>
                   <input
                     type="text"
                     className="form-control"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                  />
+                  <label className="form-label">Book Author</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
                   />
                   <div className="mb-3">
                     <label className="form-label">Category</label>

@@ -14,9 +14,19 @@ import Line from "./Line";
 function List() {
   const { books, setBooks, filterOn, filterWhat } = useContext(Home);
   // const [sortBy, setSortBy] = useState("default");
-  // const [searchBooks, setSearchBooks] = useState("");
-  // const [selectBook, setSelectBook] = useState(null);
+  const [searchBooks, setSearchBooks] = useState("");
   const [stats, setStats] = useState({bookCount: null});
+
+  const filterBySearch = () => {
+    setBooks((prevBooks) =>
+    prevBooks?.map((b) =>
+        b.title.toLocaleLowerCase().includes(searchBooks.toLocaleLowerCase())
+          ? { ...b, show: true }
+          : { ...b, show: false }
+      )
+    );
+    setSearchBooks("");
+  };
 
   const resetFilter = () => {
     setBooks((b) => b.map((bo) => ({ ...bo, show: true })));
@@ -50,21 +60,7 @@ function List() {
   //   }
   // }, [sortBy, setBooks]);
 
-//   const handleChange = (e) => {
-//     setSearchBooks(e.target.value);
-//   };
 
-//   useEffect (() => {
-//     if(searchBooks.length> 2)
-//     setBooks();
-//    }, [searchBooks, setBooks])
-
-//   useEffect (() => {
-//      if(searchBooks.length !== 3)
-//      {setBooks(null)
-//     setSelectBook(null)}
-//     }, [searchBooks, setBooks])   
-// console.log(searchBooks);
   return (
     <>
       <div className="card m-4">
@@ -74,12 +70,15 @@ function List() {
         <input
         type="text"
         placeholder="Search"
-        // value={searchBooks}
-        // onChange={handleChange}
+        value={searchBooks}
+        onChange={(e) => setSearchBooks(e.target.value)}
         style={{
           minwidth: "400px"
         }}
       ></input>
+      <button className="btn btn-outline-success" style={{marginLeft: '10px'}} onClick={filterBySearch}>
+            Search
+          </button>
       </div>
           {/* <div className="mb-3">
             <label className="form-label">Sort by</label>

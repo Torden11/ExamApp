@@ -63,7 +63,7 @@ useEffect(() => {
   useEffect(() => {
     if (null === editData) {
       return;
-    }console.log(editData.id, editData)
+    }
     axios
       .put("http://localhost:3003/server/books/" + editData.id, editData, authConfig())
       .then((res) => {

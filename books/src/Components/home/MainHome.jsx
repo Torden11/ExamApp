@@ -7,9 +7,9 @@ import { authConfig } from "../../Functions/auth";
 
 
 function MainHome() {
-  // const [lastUpdate, setLastUpdate] = useState(Date.now());
+  const [lastUpdate] = useState(Date.now());
   const [books, setBooks] = useState(null);
-  const [cart, setCart]= useState(null);
+  // const [cart, setCart]= useState(null);
   const filterOn = useRef(false);
   const filterWhat = useRef(null);
   
@@ -29,7 +29,7 @@ function MainHome() {
         setBooks(res.data.map((d, i) => ({ ...d, show: true, row: i })));
       }
     });
-  });
+  }, [lastUpdate]);
 
   
 
@@ -52,8 +52,8 @@ function MainHome() {
         setBooks,
         filterOn,
         filterWhat,
-         cart,
-         setCart
+        //  cart,
+        //  setCart
       }}
     >
       <div className="container">
