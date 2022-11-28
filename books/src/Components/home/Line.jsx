@@ -43,7 +43,10 @@ function Line({ book }) {
                             <img src={book.image} alt={book.title}>
                             </img>
                         </div> : null}
-                        <h2>{book.title}</h2>
+                    </div>
+                    <div className=" home__content__info title-container">
+                        <div className="line__content__title">{book.title}</div>
+                        <div className="line__content__author">Author: {book.author}</div>
                     </div>
                     <div className="home__content__cat click-link" onClick={filter}>
                         Category: {book.catTitle}
